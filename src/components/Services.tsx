@@ -1,5 +1,8 @@
 // Services — Audit entry points + full client journey ladder
+// Updated: 2026-03-31 (Day 17 overnight) — SMB messaging header added, Dual-Constitution badge,
+//   design upgrades, Cormorant display headlines
 import { Search, Settings, ShieldCheck, ArrowRight, Check, Star, Rocket, Brain, Cpu, Shield, ChevronDown } from 'lucide-react'
+import DualConstitution from './DualConstitution'
 
 const AUDITS = [
   {
@@ -160,15 +163,24 @@ export default function Services() {
   return (
     <section id="services" className="py-24 md:py-32 bg-white">
       <div className="max-w-7xl mx-auto px-6">
+        {/* SMB messaging banner */}
+        <div className="bg-light-blue border border-accent-blue/20 rounded-2xl p-5 mb-16 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <div>
+            <p className="font-semibold text-navy text-sm">Designed for Small and Mid-Size Businesses</p>
+            <p className="text-muted-gray text-sm mt-0.5">Every product is scoped and priced for businesses with 5–500 employees. Enterprise intelligence. SMB budget.</p>
+          </div>
+          <div className="text-sm font-bold text-accent-blue whitespace-nowrap">McKinsey depth · SMB pricing</div>
+        </div>
+
         {/* Section header */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <span className="text-accent-blue font-semibold text-sm tracking-wider uppercase">Services</span>
-          <h2 className="text-3xl md:text-5xl font-bold text-navy mt-3 mb-6">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <span className="text-accent-blue font-semibold text-xs tracking-[0.15em] uppercase mb-4 block">Services</span>
+          <h2 className="font-display text-4xl md:text-5xl font-semibold text-navy mb-5">
             Three Entry Points.
             <br />
-            <span className="text-muted-gray">One Strategic Platform.</span>
+            <span className="italic font-normal text-muted-gray">One Strategic Platform.</span>
           </h2>
-          <p className="text-lg text-muted-gray leading-relaxed">
+          <p className="text-lg text-muted-gray leading-relaxed font-light">
             Every engagement starts with intelligence. Whether you're invisible to AI, frustrated
             with failed implementations, or navigating new regulations — we meet you where you are.
           </p>
@@ -360,11 +372,16 @@ export default function Services() {
           </div>
         </div>
 
+        {/* Dual Constitution compact */}
+        <div className="mt-12 max-w-2xl mx-auto">
+          <DualConstitution variant="compact" />
+        </div>
+
         {/* Bottom CTA */}
-        <div className="text-center mt-16">
+        <div className="text-center mt-12">
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 bg-accent-blue text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-blue-500 transition-colors shadow-lg"
+            className="inline-flex items-center gap-2 bg-accent-blue text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-blue-500 transition-colors shadow-lg hover:shadow-xl hover:shadow-accent-blue/20"
           >
             Start With a Free Audit <ArrowRight size={20} />
           </a>

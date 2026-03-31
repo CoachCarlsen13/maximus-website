@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
 @import "tailwindcss";
 
 /* Maximus Brand Colors */
@@ -14,7 +15,7 @@
   --color-body-gray: #333333;
   --color-muted-gray: #6B7280;
   --color-border-gray: #E5E7EB;
-  --color-gold: #D4A843;
+  --color-gold: #C9A84C;
 }
 
 /* Base styles */
@@ -23,11 +24,40 @@ html {
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  color: #333333;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  color: #1a1f2e;
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Premium headline font */
+.font-display {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+/* Subtle noise texture overlay for premium depth */
+.texture-noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Gold accent text */
+.text-gold {
+  color: #C9A84C;
+}
+
+/* Data grid background — subtle intelligence aesthetic */
+.bg-data-grid {
+  background-color: #070D1A;
+  background-image:
+    linear-gradient(rgba(59, 125, 216, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 125, 216, 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
 }
 
 /* Smooth section scroll offset for sticky nav */
@@ -89,4 +119,67 @@ section[id] {
 
 .pulse-cta {
   animation: pulse-soft 2s ease-in-out infinite;
+}
+
+/* Staggered fade-up delays for premium reveal sequence */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
+.delay-700 { animation-delay: 0.7s; }
+
+/* Floating intelligence card animation */
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.float-card {
+  animation: float-gentle 4s ease-in-out infinite;
+}
+
+.float-card-slow {
+  animation: float-gentle 5.5s ease-in-out infinite;
+  animation-delay: 0.8s;
+}
+
+/* Shine sweep for premium cards */
+@keyframes shine {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.card-shine:hover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255,255,255,0.06) 50%,
+    transparent 60%
+  );
+  background-size: 200% 100%;
+  animation: shine 0.6s ease-out;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+/* Dual-constitution glow */
+@keyframes constitution-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(59, 125, 216, 0.15); }
+  50% { box-shadow: 0 0 40px rgba(59, 125, 216, 0.3); }
+}
+
+.constitution-card {
+  animation: constitution-glow 4s ease-in-out infinite;
+}
+
+/* Section separator — intelligence pulse line */
+.intel-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #3B7DD8, transparent);
+  opacity: 0.3;
 }

@@ -34,13 +34,13 @@ export default function Results() {
       <div className="max-w-7xl mx-auto px-6">
         {/* Section header */}
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <span className="text-accent-blue font-semibold text-sm tracking-wider uppercase">Market Intelligence</span>
-          <h2 className="text-3xl md:text-5xl font-bold text-navy mt-3 mb-6">
+          <span className="text-accent-blue font-semibold text-xs tracking-[0.15em] uppercase mb-4 block">Market Intelligence</span>
+          <h2 className="font-display text-4xl md:text-5xl font-semibold text-navy mb-5">
             The Shift Is Already Here.
             <br />
-            <span className="text-muted-gray">The Data Proves It.</span>
+            <span className="italic font-normal text-muted-gray">The Data Proves It.</span>
           </h2>
-          <p className="text-lg text-muted-gray leading-relaxed">
+          <p className="text-lg text-muted-gray leading-relaxed font-light">
             AI is fundamentally changing how customers find businesses. The companies that
             optimize for AI engines today will dominate their markets tomorrow.
           </p>

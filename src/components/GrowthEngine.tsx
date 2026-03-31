@@ -40,13 +40,13 @@ export default function GrowthEngine() {
       <div className="max-w-7xl mx-auto px-6">
         {/* Section header */}
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <span className="text-accent-blue font-semibold text-sm tracking-wider uppercase">Growth Engine</span>
-          <h2 className="text-3xl md:text-5xl font-bold text-navy mt-3 mb-6">
+          <span className="text-accent-blue font-semibold text-xs tracking-[0.15em] uppercase mb-4 block">Growth Engine</span>
+          <h2 className="font-display text-4xl md:text-5xl font-semibold text-navy mb-5">
             Leads. Conversion. Intelligence.
             <br />
-            <span className="text-muted-gray">All Three. Day One.</span>
+            <span className="italic font-normal text-muted-gray">All Three. Day One.</span>
           </h2>
-          <p className="text-lg text-muted-gray leading-relaxed">
+          <p className="text-lg text-muted-gray leading-relaxed font-light">
             Other consultants give you a report and wish you luck. Maximus delivers
             a complete growth system — lead generation powered by competitive intelligence,
             AI-powered call handling, and ongoing strategic optimization.

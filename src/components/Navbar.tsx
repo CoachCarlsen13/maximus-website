@@ -36,8 +36,8 @@ export default function Navbar() {
             <span className="text-white font-bold text-lg">M</span>
           </div>
           <div>
-            <span className={`text-xl font-bold tracking-tight ${scrolled ? 'text-navy' : 'text-white'}`}>
-              MAXIMUS
+            <span className={`font-display text-2xl font-semibold tracking-tight ${scrolled ? 'text-navy' : 'text-white'}`}>
+              Maximus
             </span>
             <span className={`block text-[10px] tracking-[0.2em] uppercase ${scrolled ? 'text-muted-gray' : 'text-blue-200'}`}>
               AI Strategic Advisory
