@@ -1,185 +1,242 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
+/* Maximus AI Strategic Advisory — Brand-Canonical Stylesheet
+ * Source of truth: maximus-brand-identity skill v1.1 (LOCKED 2026-03-21)
+ * Rebuilt 2026-04-18 per directive 87566ed7 + Article 29 (Wynns Principle)
+ *
+ * Color palette: Navy Deep #0A0E27 dominant, Cyan Glow #00B4D8 sole accent
+ * Typography: Clash Display (headlines) + DM Sans (body) + JetBrains Mono (data)
+ * Signature textures: hex grid + circuit traces + horizontal cyan light beam
+ */
+
+/* Fonts: Clash Display (headlines) + DM Sans (body) + JetBrains Mono (data)
+ * Clash Display is loaded from Fontshare (free for commercial use). */
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@600,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 @import "tailwindcss";
 
-/* Maximus Brand Colors */
+/* Maximus brand-canonical theme variables (per maximus-brand-identity skill) */
 @theme {
-  --color-navy: #1B2A4A;
-  --color-navy-light: #243458;
-  --color-dark-blue: #2E4A7A;
-  --color-accent-blue: #3B7DD8;
-  --color-light-blue: #E8F0FA;
-  --color-ice-blue: #F4F8FD;
-  --color-risk-red: #C0392B;
-  --color-success-green: #27AE60;
-  --color-warning-orange: #E67E22;
-  --color-body-gray: #333333;
-  --color-muted-gray: #6B7280;
-  --color-border-gray: #E5E7EB;
-  --color-gold: #C9A84C;
+  /* Primary navy palette — DOMINANT, 70-80% of any composition */
+  --color-navy-deep: #0A0E27;
+  --color-navy-mid: #111633;
+  --color-navy-dark: #060918;
+
+  /* Cyan accent — SOLE accent color (per brand rules) */
+  --color-cyan-glow: #00B4D8;
+  --color-cyan-light: #00D4FF;
+  --color-cyan-deep: #0077B6;
+
+  /* Text */
+  --color-ice-white: #E0F7FF;
+  --color-pure-white: #FFFFFF;
+
+  /* Utility — severity ONLY, not decorative */
+  --color-amber-warn: #FFA500;
+  --color-red-critical: #FF4444;
+
+  /* Font families */
+  --font-display: 'Clash Display', system-ui, sans-serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 }
 
-/* Base styles */
+/* Base — entire site is permanently dark */
 html {
   scroll-behavior: smooth;
+  background: #0A0E27;
 }
 
 body {
-  font-family: 'DM Sans', system-ui, sans-serif;
-  color: #1a1f2e;
+  font-family: var(--font-body);
+  background: #0A0E27;
+  color: #E0F7FF;
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Premium headline font */
+/* Typography utility classes */
 .font-display {
-  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.015em;
 }
 
-/* Subtle noise texture overlay for premium depth */
-.texture-noise::after {
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.text-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #00B4D8;
+  font-weight: 500;
+}
+
+/* Gradient text — for SINGLE most important phrase only */
+.text-gradient-cyan {
+  background: linear-gradient(135deg, #00D4FF 0%, #00B4D8 40%, #E0F7FF 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Glow effects */
+.text-glow-cyan {
+  text-shadow: 0 0 20px rgba(0, 180, 216, 0.5), 0 0 40px rgba(0, 180, 216, 0.2);
+}
+
+.box-glow-cyan {
+  box-shadow: 0 0 20px rgba(0, 180, 216, 0.3), 0 0 60px rgba(0, 180, 216, 0.1);
+}
+
+/* CTA pulse animation */
+@keyframes cta-pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(0, 180, 216, 0.3), 0 0 60px rgba(0, 180, 216, 0.1); }
+  50%      { box-shadow: 0 0 40px rgba(0, 180, 216, 0.5), 0 0 80px rgba(0, 180, 216, 0.2); }
+}
+
+.cta-pulse {
+  animation: cta-pulse 3s ease-in-out infinite;
+}
+
+/* Glass morphism cards (per brand spec) */
+.glass-card {
+  background: linear-gradient(135deg, rgba(17, 22, 51, 0.7) 0%, rgba(10, 14, 39, 0.8) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 180, 216, 0.12);
+  border-radius: 16px;
+  transition: border-color 200ms ease;
+}
+
+.glass-card:hover {
+  border-color: rgba(0, 180, 216, 0.35);
+}
+
+/* Hexagonal grid pattern — signature texture */
+.hex-grid {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 52' width='60' height='52'><path fill='none' stroke='%2300B4D8' stroke-width='0.3' opacity='0.12' d='M30 0 L60 17.3 L60 34.6 L30 52 L0 34.6 L0 17.3 Z'/></svg>");
+  background-repeat: repeat;
+  background-size: 30px 26px;
+}
+
+/* Section label divider with cyan beam */
+.cyan-beam {
+  height: 2px;
+  width: 60px;
+  background: linear-gradient(90deg, transparent, #00D4FF, transparent);
+  box-shadow: 0 0 16px rgba(0, 180, 216, 0.6);
+}
+
+/* CTA buttons (per brand spec) */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 32px;
+  background: linear-gradient(135deg, #00B4D8 0%, #0077B6 100%);
+  color: #FFFFFF;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 16px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 200ms ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: transparent;
+  color: #FFFFFF;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  border: 1px solid #00B4D8;
+  border-radius: 12px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 200ms ease, color 200ms ease;
+}
+
+.btn-secondary:hover {
+  background: rgba(0, 180, 216, 0.1);
+}
+
+/* Status pill — IN DEVELOPMENT label */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: rgba(0, 180, 216, 0.08);
+  border: 1px solid rgba(0, 180, 216, 0.3);
+  border-radius: 999px;
+  color: #00B4D8;
+}
+
+.status-pill::before {
   content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 1;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00B4D8;
+  box-shadow: 0 0 6px rgba(0, 180, 216, 0.8);
 }
 
-/* Gold accent text */
-.text-gold {
-  color: #C9A84C;
+.status-pill-proven {
+  background: rgba(0, 212, 255, 0.12);
+  border-color: rgba(0, 212, 255, 0.5);
+  color: #00D4FF;
 }
 
-/* Data grid background — subtle intelligence aesthetic */
-.bg-data-grid {
-  background-color: #070D1A;
-  background-image:
-    linear-gradient(rgba(59, 125, 216, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(59, 125, 216, 0.06) 1px, transparent 1px);
-  background-size: 48px 48px;
+/* Section spacing */
+section {
+  padding: 96px 24px;
+  position: relative;
 }
 
-/* Smooth section scroll offset for sticky nav */
+@media (min-width: 768px) {
+  section {
+    padding: 128px 48px;
+  }
+}
+
+@media (min-width: 1280px) {
+  section {
+    padding: 144px 64px;
+  }
+}
+
+/* Container */
+.container-max {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Selection */
+::selection {
+  background: rgba(0, 180, 216, 0.3);
+  color: #FFFFFF;
+}
+
+/* Smooth scroll padding to account for fixed nav */
 section[id] {
   scroll-margin-top: 80px;
-}
-
-/* Gradient text utility */
-.gradient-text {
-  background: linear-gradient(135deg, #3B7DD8, #1B2A4A);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Animated gradient background */
-@keyframes gradient-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
-.animated-gradient {
-  background: linear-gradient(135deg, #1B2A4A, #2E4A7A, #1B2A4A, #3B7DD8);
-  background-size: 300% 300%;
-  animation: gradient-shift 8s ease infinite;
-}
-
-/* Fade-in animation */
-@keyframes fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.fade-up {
-  animation: fade-up 0.8s ease-out forwards;
-}
-
-/* Counter animation for stats */
-@keyframes count-up {
-  from { opacity: 0; transform: scale(0.5); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-.count-up {
-  animation: count-up 0.6s ease-out forwards;
-}
-
-/* Pulse for CTA */
-@keyframes pulse-soft {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(59, 125, 216, 0.4); }
-  50% { box-shadow: 0 0 0 12px rgba(59, 125, 216, 0); }
-}
-
-.pulse-cta {
-  animation: pulse-soft 2s ease-in-out infinite;
-}
-
-/* Staggered fade-up delays for premium reveal sequence */
-.delay-100 { animation-delay: 0.1s; }
-.delay-200 { animation-delay: 0.2s; }
-.delay-300 { animation-delay: 0.3s; }
-.delay-400 { animation-delay: 0.4s; }
-.delay-500 { animation-delay: 0.5s; }
-.delay-600 { animation-delay: 0.6s; }
-.delay-700 { animation-delay: 0.7s; }
-
-/* Floating intelligence card animation */
-@keyframes float-gentle {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
-}
-
-.float-card {
-  animation: float-gentle 4s ease-in-out infinite;
-}
-
-.float-card-slow {
-  animation: float-gentle 5.5s ease-in-out infinite;
-  animation-delay: 0.8s;
-}
-
-/* Shine sweep for premium cards */
-@keyframes shine {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
-}
-
-.card-shine:hover::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    105deg,
-    transparent 40%,
-    rgba(255,255,255,0.06) 50%,
-    transparent 60%
-  );
-  background-size: 200% 100%;
-  animation: shine 0.6s ease-out;
-  border-radius: inherit;
-  pointer-events: none;
-}
-
-/* Dual-constitution glow */
-@keyframes constitution-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(59, 125, 216, 0.15); }
-  50% { box-shadow: 0 0 40px rgba(59, 125, 216, 0.3); }
-}
-
-.constitution-card {
-  animation: constitution-glow 4s ease-in-out infinite;
-}
-
-/* Section separator — intelligence pulse line */
-.intel-divider {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #3B7DD8, transparent);
-  opacity: 0.3;
 }
